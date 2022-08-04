@@ -2,6 +2,7 @@
 
 namespace Acme;
 
+use Acme\Services\OMDbService;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
@@ -20,7 +21,7 @@ class GetMovieInformationCommand extends Command
 
     public function execute(InputInterface $input, OutputInterface $output): int
     {
-        $movie = $input->getArgument('movie');
+        $movieInformation = (new OMDbService($input->getOption('fullPlot')))->getMovieInformation($input->getArgument('movie'));
 
         return 0;
     }

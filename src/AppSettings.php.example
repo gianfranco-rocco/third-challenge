@@ -1,5 +1,7 @@
 <?php
 
+namespace Acme;
+
 class AppSettings
 {
     const OMDB_API_URI = 'http://www.omdbapi.com';
