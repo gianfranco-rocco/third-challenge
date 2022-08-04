@@ -1,0 +1,7 @@
+<?php
+
+class AppSettings
+{
+    const OMDB_API_URI = '';
+    const OMDB_API_KEY = '';
+}
