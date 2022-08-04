@@ -17,7 +17,7 @@ class OMDbService
         $this->apiUri = $this->getUri($fullPlot);
     }
 
-    public function getMovieInformation(string $movie)
+    public function getMovieInformation(string $movie): mixed
     {
         $response = $this->client->get("{$this->apiUri}&t={$movie}")->getBody();
 
