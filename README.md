@@ -25,7 +25,7 @@ Follow these steps to setup the development environment...
 - Run `composer install`
 - cd into `src`
 - Run `cp AppSettings.php.example AppSettings.php`
-- Set AppSettings.php's `OMDB_API_KEY` const with you OMDb API Key
+- Set AppSettings.php's `OMDB_API_KEY` const with your OMDb API Key
 
 ### Running
 
