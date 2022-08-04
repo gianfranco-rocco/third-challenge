@@ -4,6 +4,7 @@ namespace Acme\Services;
 
 use Acme\AppSettings;
 use GuzzleHttp\Client;
+use stdClass;
 
 class OMDbService
 {
@@ -21,6 +22,34 @@ class OMDbService
         $response = $this->client->get("{$this->apiUri}&t={$movie}")->getBody();
 
         return json_decode($response);
+    }
+
+    public function stringifyRatings(array $ratings): string
+    {
+        $stringifiedRatings = "";
+
+        foreach ($ratings as $rating) {
+            $rating = (array) $rating;
+
+            if (!empty($stringifiedRatings)) {
+                $stringifiedRatings .= " | ";
+            }
+
+            $stringifiedRatings .= "{$rating['Source']}: {$rating['Value']}";
+        }
+
+        return $stringifiedRatings;
+    }
+
+    public function getRowsForTableRender(stdClass $movieInformation): array
+    {
+        $rows = [];
+
+        foreach($movieInformation as $key => $value) {
+            $rows[] = [$key, $value];
+        }
+
+        return $rows;
     }
 
     private function getUri(bool $fullPlot = false): string
